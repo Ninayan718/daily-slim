@@ -244,6 +244,33 @@ details.faq .faq-body{padding:0 14px 14px;font-size:12.8px;color:var(--ink-2);li
   .h1{font-size:21px}
 }
 
+/* ---------- 分享图弹层 ---------- */
+.share-entry{width:100%;height:46px;border-radius:13px;background:var(--green-soft);border:1px solid #D8EBDE;color:var(--green-deep);font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px}
+.share-entry svg{width:17px;height:17px}
+.modal{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center;background:rgba(30,40,34,.46)}
+.modal-inner{width:100%;max-width:480px;max-height:92vh;overflow-y:auto;background:var(--bg);border-radius:20px 20px 0 0;padding:16px 16px calc(20px + env(safe-area-inset-bottom));box-shadow:0 -8px 30px rgba(0,0,0,.14)}
+.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px;gap:10px}
+.modal-title{font-size:16px;font-weight:700}
+.modal-close{font-size:13px;color:var(--sub);padding:6px 4px}
+.seg{display:flex;background:#F0EDE5;border-radius:11px;padding:3px;gap:3px}
+.seg button{flex:1;height:36px;border-radius:9px;font-size:13px;font-weight:600;color:var(--sub)}
+.seg button.on{background:#fff;color:var(--green-deep);box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.share-label{font-size:12px;color:var(--sub);margin:15px 2px 7px}
+.share-input{width:100%;height:42px;border:1px solid var(--line);border-radius:11px;padding:0 12px;background:#fff;font-size:13.5px;outline:none}
+.share-input:focus{border-color:var(--green-mid)}
+.switch-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 2px 4px;font-size:13px;color:var(--ink-2);cursor:pointer}
+.switch{width:42px;height:24px;border-radius:99px;background:#DCDDD7;position:relative;transition:background .2s;flex:0 0 42px}
+.switch:after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .2s}
+.switch.on{background:var(--green)}
+.switch.on:after{transform:translateX(18px)}
+.share-preview{margin-top:10px;background:#EFEBE2;border-radius:14px;padding:10px;display:flex;justify-content:center}
+.share-preview img{width:auto;max-width:100%;max-height:300px;height:auto;display:block;border-radius:8px;box-shadow:0 3px 14px rgba(0,0,0,.10)}
+.share-hint{font-size:11.5px;color:var(--sub);line-height:1.6;margin-top:11px;text-align:center}
+.share-actions{display:flex;gap:9px;margin-top:13px}
+.share-actions button{flex:1;height:44px;border-radius:12px;font-size:14px;font-weight:700}
+.btn-save{background:var(--green);color:#fff}
+.btn-sec{background:#fff;border:1px solid var(--line);color:var(--ink-2)}
+
 </style>
 </head>
 <body>
@@ -261,6 +288,7 @@ details.faq .faq-body{padding:0 14px 14px;font-size:12.8px;color:var(--ink-2);li
 </div>
 <input type="file" id="importFile" accept="application/json,.json" hidden>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="modalRoot"></div>
 <script>
 /* 慢慢瘦 · 全部文案与图标数据（改内容只改这个文件） */
 var ICONS = {
@@ -285,7 +313,8 @@ var ICONS = {
   down: '<path d="M12 3v13M7 12l5 5 5-5M4 21h16"/>',
   up: '<path d="M12 21V8M7 12l5-5 5 5M4 3h16"/>',
   trash: '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"/>',
-  smile: '<circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0M9 9.5h.01M15 9.5h.01"/>'
+  smile: '<circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0M9 9.5h.01M15 9.5h.01"/>',
+  share: '<path d="M12 15V3M8 7l4-4 4 4"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/>'
 };
 function svg(name, cls) {
   return '<svg class="ic ' + (cls || '') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[name] || '') + '</svg>';
@@ -424,6 +453,17 @@ var TIPS = [
   '聚餐不用报备、不用解释。先夹菜、主食少一点、甜饮换水，就够了。',
   '最容易被忽略的不是主食，是酱汁、坚果、水果和「就尝一口」。'
 ];
+
+/* 分享图：版式尺寸与固定文案 */
+var SHARE = {
+  sizes: {
+    xhs:    { w: 1080, h: 1440, name: '小红书 3:4' },
+    wechat: { w: 1200, h: 675,  name: '公众号 16:9' }
+  },
+  tags: ['不买特别的菜', '不换衣服运动', '不算任何数字'],
+  footer: '慢慢瘦 · 日常化减脂打卡',
+  slogan: '慢慢来，比较快。'
+};
 
 </script>
 <script>
@@ -743,6 +783,8 @@ var TIPS = [
     h.push('<div class="stat"><div class="stat-v">' + recordedDays() + '</div><div class="stat-l">已记录天数</div></div>');
     h.push('</div>');
 
+    h.push('<button class="share-entry" type="button" data-act="share">' + svg('share') + '生成分享图 · 小红书 / 公众号</button>');
+
     h.push('<div class="section-title"><span class="h2">最近三周</span><span class="small">越深，做得越多</span></div>');
     h.push('<div class="card pad">');
     h.push('<div class="heat" style="margin-bottom:6px">');
@@ -773,6 +815,295 @@ var TIPS = [
     h.push('</div>');
     h.push('<p class="muted" style="text-align:center;margin-top:14px;line-height:1.7">不上传、不联网、不需要登录。<br>换手机前记得导出一份。</p>');
     return h.join('');
+  }
+
+  /* ---------------- 分享图（原生 Canvas，无依赖） ---------------- */
+  var SH = {
+    bg: '#FCF9F4', card: '#FFFFFF', ink: '#2C3A33', sub: '#8A968E',
+    green: '#3F8F6B', deep: '#2E7154', soft: '#E9F4ED', line: '#EDE8DE', amber: '#D99552'
+  };
+  var HEAT = ['#F0EDE5', '#DCEDDF', '#B5DCC2', '#7BC49C', '#3F8F6B'];
+  var FONT = '-apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif';
+  var shareState = { layout: 'xhs', text: '', showWeight: false };
+  var shareCanvas = null, shareTimer = null;
+
+  function heatIdx(n) { return n <= 0 ? 0 : n <= 2 ? 1 : n <= 4 ? 2 : n === 5 ? 3 : 4; }
+  function cText(ctx, s, x, y, size, color, bold, align) {
+    ctx.font = (bold ? 'bold ' : '') + size + 'px ' + FONT;
+    ctx.fillStyle = color || SH.ink;
+    ctx.textAlign = align || 'left';
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillText(s, x, y);
+  }
+  function rRect(ctx, x, y, w, h, r, fill, stroke, lw) {
+    r = Math.min(r, w / 2, h / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+    if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+    if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = lw || 1.5; ctx.stroke(); }
+  }
+  function wrapLines(ctx, s, maxW, maxLines, size, bold) {
+    ctx.font = (bold ? 'bold ' : '') + size + 'px ' + FONT;
+    var lines = [], cur = '';
+    for (var i = 0; i < s.length; i++) {
+      var ch = s[i];
+      if (cur && ctx.measureText(cur + ch).width > maxW) {
+        lines.push(cur); cur = ch;
+        if (lines.length >= maxLines) break;
+      } else cur += ch;
+    }
+    if (lines.length < maxLines && cur) lines.push(cur);
+    if (lines.length === maxLines && lines.join('').length < s.length) {
+      var last = lines[maxLines - 1];
+      while (last && ctx.measureText(last + '…').width > maxW) last = last.slice(0, -1);
+      lines[maxLines - 1] = last + '…';
+    }
+    return lines;
+  }
+  function drawHeat(ctx, x, y, cell, gap, cells, showDate) {
+    cells.forEach(function (c, i) {
+      var cx = x + (i % 7) * (cell + gap);
+      var cy = y + Math.floor(i / 7) * (cell + gap);
+      var r = Math.max(4, cell * 0.22);
+      if (c.future) {
+        rRect(ctx, cx, cy, cell, cell, r, '#F7F4ED');
+        ctx.save(); ctx.setLineDash([6, 6]);
+        rRect(ctx, cx, cy, cell, cell, r, null, '#E2DDD1', 2);
+        ctx.restore();
+      } else {
+        rRect(ctx, cx, cy, cell, cell, r, HEAT[heatIdx(c.n)]);
+        if (showDate) {
+          var col = c.n >= 5 ? '#FFFFFF' : (c.n >= 3 ? '#204A34' : '#8A968E');
+          cText(ctx, String(+c.d.split('-')[2]), cx + cell / 2, cy + cell / 2 + cell * 0.17,
+            Math.round(cell * 0.30), col, false, 'center');
+        }
+      }
+      if (c.today) rRect(ctx, cx - 3, cy - 3, cell + 6, cell + 6, r + 3, null, SH.amber, 4);
+    });
+  }
+  function shareStats() {
+    var t = todayStr(), start = addDays(mondayOf(t), -14), cells = [];
+    for (var i = 0; i < 21; i++) {
+      var ds = addDays(start, i);
+      cells.push({ d: ds, n: cCount(getDay(ds)), future: ds > t, today: ds === t });
+    }
+    var counts = {}, total = 0;
+    CORE.forEach(function (x) { counts[x.id] = 0; });
+    for (var j = 0; j < 7; j++) {
+      var d = getDay(addDays(t, -j));
+      if (d && Array.isArray(d.c)) d.c.forEach(function (id) { if (id in counts) { counts[id]++; total++; } });
+    }
+    var best = CORE.slice().sort(function (a, b) { return counts[b.id] - counts[a.id]; })[0];
+    var items = 0;
+    Object.keys(state.days).forEach(function (k) { items += cCount(state.days[k]); });
+    var wl = weightList();
+    var wd = wl.length > 1 ? Math.round((wl[wl.length - 1].w - wl[0].w) * 10) / 10 : null;
+    return {
+      streak: streak(), rate: rate7(), days: recordedDays(), items: items, cells: cells,
+      best: best, bestN: counts[best.id], hasBest: total > 0,
+      wdelta: wd, hasWeight: wd !== null
+    };
+  }
+  function defaultShareText() {
+    var s = streak();
+    if (s >= 7) return '没节食，没去健身房，只是每天做到一点点。';
+    if (s >= 1) return '都是些不用咬牙就能做的小事。';
+    if (recordedDays() > 0) return '断了也没关系，今天勾一项就接上。';
+    return '从今天开始，把减肥放进原本的生活里。';
+  }
+  function weightLabel(S) {
+    if (!S.hasWeight) return '';
+    var d = S.wdelta;
+    if (d > 0) return '体重累计 ↑' + d.toFixed(1) + ' kg';
+    if (d < 0) return '体重累计 ↓' + Math.abs(d).toFixed(1) + ' kg';
+    return '体重持平';
+  }
+  function weightColor(S) { return S.hasWeight && S.wdelta > 0 ? '#D25B4B' : SH.deep; }
+
+  function drawXHS(ctx, S, D) {
+    var W = 1080, H = 1440, P = 80;
+    ctx.fillStyle = SH.bg; ctx.fillRect(0, 0, W, H);
+    ctx.beginPath(); ctx.arc(W + 40, 130, 300, 0, Math.PI * 2); ctx.fillStyle = '#F1F7F1'; ctx.fill();
+
+    ctx.beginPath(); ctx.arc(P + 14, 92, 14, 0, Math.PI * 2); ctx.fillStyle = SH.green; ctx.fill();
+    cText(ctx, '慢慢瘦', P + 42, 104, 34, SH.deep, true);
+    cText(ctx, '日常减脂 · 第 ' + Math.max(1, diffDays(todayStr(), state.created) + 1) + ' 天',
+      W - P, 104, 24, SH.sub, false, 'right');
+    ctx.strokeStyle = SH.line; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(P, 145); ctx.lineTo(W - P, 145); ctx.stroke();
+
+    cText(ctx, S.streak > 0 ? '连续 ' + S.streak + ' 天' : '今天开个头', P, 260, 88, SH.deep, true);
+    var lines = wrapLines(ctx, D.text || defaultShareText(), W - 2 * P, 2, 30, false);
+    lines.forEach(function (l, i) { cText(ctx, l, P, 325 + i * 44, 30, SH.ink, false); });
+
+    var cw = (W - 2 * P - 40) / 3, cy = 400, ch = 152;
+    var cards = [
+      { v: S.days + ' 天', l: '已记录天数' },
+      { v: S.rate + '%', l: '本周完成率' },
+      { v: S.items + ' 项', l: '累计做到' }
+    ];
+    cards.forEach(function (c, i) {
+      var x = P + i * (cw + 20);
+      rRect(ctx, x, cy, cw, ch, 22, SH.card, SH.line, 2);
+      cText(ctx, c.v, x + 24, cy + 80, 54, SH.deep, true);
+      cText(ctx, c.l, x + 24, cy + 124, 24, SH.sub, false);
+    });
+
+    cText(ctx, '最近三周', P, 620, 30, SH.ink, true);
+    var sub = D.showWeight && S.hasWeight ? weightLabel(S) : '越深，做得越多';
+    cText(ctx, sub, W - P, 620, 22, D.showWeight && S.hasWeight ? weightColor(S) : SH.sub, false, 'right');
+
+    var cell = 118, gap = 16, hx = P, hy = 690;
+    var wd7 = ['一', '二', '三', '四', '五', '六', '日'];
+    wd7.forEach(function (w, i) { cText(ctx, w, hx + i * (cell + gap) + cell / 2, hy - 18, 20, SH.sub, false, 'center'); });
+    drawHeat(ctx, hx, hy, cell, gap, S.cells, true);
+
+    var by = 1110;
+    rRect(ctx, P, by, W - 2 * P, 112, 20, SH.soft);
+    if (S.hasBest) {
+      cText(ctx, '最稳的一项', P + 28, by + 46, 24, SH.deep, true);
+      cText(ctx, S.best.title + ' · 近 7 天做到 ' + S.bestN + ' 次', P + 28, by + 88, 28, SH.deep, false);
+    } else {
+      cText(ctx, '从今天开始，勾一项就算开场。', P + 28, by + 68, 28, SH.deep, false);
+    }
+
+    ctx.font = '24px ' + FONT;
+    var tx = P, ty = 1268;
+    SHARE.tags.forEach(function (tag) {
+      var tw = ctx.measureText(tag).width + 40;
+      rRect(ctx, tx, ty, tw, 56, 28, SH.card, SH.line, 2);
+      cText(ctx, tag, tx + 20, ty + 37, 24, SH.ink, false);
+      tx += tw + 14;
+    });
+
+    cText(ctx, SHARE.slogan, P, 1380, 32, SH.deep, true);
+    cText(ctx, SHARE.footer, W - P, 1380, 22, SH.sub, false, 'right');
+  }
+
+  function drawWechat(ctx, S, D) {
+    var W = 1200, H = 675, P = 64;
+    ctx.fillStyle = SH.bg; ctx.fillRect(0, 0, W, H);
+    ctx.beginPath(); ctx.arc(W + 80, 60, 260, 0, Math.PI * 2); ctx.fillStyle = '#F1F7F1'; ctx.fill();
+
+    ctx.beginPath(); ctx.arc(P + 11, 72, 11, 0, Math.PI * 2); ctx.fillStyle = SH.green; ctx.fill();
+    cText(ctx, '慢慢瘦', P + 32, 82, 26, SH.deep, true);
+    cText(ctx, S.streak > 0 ? '连续 ' + S.streak + ' 天' : '今天开个头', P, 205, 68, SH.deep, true);
+    var lines = wrapLines(ctx, D.text || defaultShareText(), 480, 2, 24, false);
+    lines.forEach(function (l, i) { cText(ctx, l, P, 258 + i * 36, 24, SH.ink, false); });
+
+    var nums = [
+      { v: S.days + ' 天', l: '已记录' },
+      { v: S.rate + '%', l: '本周完成率' },
+      { v: S.items + ' 项', l: '累计做到' }
+    ];
+    var nx = P;
+    nums.forEach(function (n, i) {
+      cText(ctx, n.v, nx, 390, 40, SH.deep, true);
+      cText(ctx, n.l, nx, 424, 20, SH.sub, false);
+      if (i < 2) {
+        ctx.strokeStyle = SH.line; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(nx + 152, 358); ctx.lineTo(nx + 152, 430); ctx.stroke();
+      }
+      nx += 170;
+    });
+
+    cText(ctx, SHARE.tags.join(' · '), P, 505, 20, SH.sub, false);
+    cText(ctx, SHARE.slogan, P, 590, 30, SH.green, true);
+    cText(ctx, SHARE.footer, P, 625, 19, SH.sub, false);
+
+    var cx = 620, cyy = 64, cw = 516, ch = 547;
+    rRect(ctx, cx, cyy, cw, ch, 24, SH.card, SH.line, 2);
+    cText(ctx, '最近三周', cx + 34, cyy + 56, 26, SH.ink, true);
+    var sub = D.showWeight && S.hasWeight ? weightLabel(S) : '越深，做得越多';
+    cText(ctx, sub, cx + cw - 34, cyy + 56, 19,
+      D.showWeight && S.hasWeight ? weightColor(S) : SH.sub, false, 'right');
+
+    var cell = 56, gap = 8, hx = cx + 34, hy = cyy + 90;
+    var wd7 = ['一', '二', '三', '四', '五', '六', '日'];
+    wd7.forEach(function (w, i) { cText(ctx, w, hx + i * (cell + gap) + cell / 2, hy - 10, 15, SH.sub, false, 'center'); });
+    drawHeat(ctx, hx, hy, cell, gap, S.cells, false);
+
+    var ry = cyy + 320;
+    rRect(ctx, cx + 34, ry, cw - 68, 92, 16, SH.soft);
+    if (S.hasBest) {
+      cText(ctx, '最稳的一项', cx + 54, ry + 36, 20, SH.deep, true);
+      cText(ctx, S.best.title + ' · ' + S.bestN + '/7 天', cx + 54, ry + 70, 22, SH.deep, false);
+    } else {
+      cText(ctx, '从今天开始，勾一项就算开场。', cx + 54, ry + 56, 22, SH.deep, false);
+    }
+
+    var lx = cx + 34, ly = cyy + 455;
+    cText(ctx, '少', lx, ly, 18, SH.sub, false);
+    HEAT.forEach(function (col, i) { rRect(ctx, lx + 28 + i * 26, ly - 16, 20, 20, 5, col); });
+    cText(ctx, '多', lx + 28 + 5 * 26 + 4, ly, 18, SH.sub, false);
+    cText(ctx, SHARE.tags.join(' · '), cx + 34, cyy + 510, 18, SH.sub, false);
+  }
+
+  function openShare() {
+    shareState.layout = 'xhs';
+    shareState.text = defaultShareText();
+    shareState.showWeight = false;
+    document.body.style.overflow = 'hidden';
+    renderShareModal();
+  }
+  function closeShare() {
+    el('modalRoot').innerHTML = '';
+    document.body.style.overflow = '';
+    shareCanvas = null;
+    shareTimer = null;
+  }
+  function renderShareModal() {
+    var seg = '';
+    Object.keys(SHARE.sizes).forEach(function (k) {
+      seg += '<button type="button" data-act="layout" data-layout="' + k + '" class="' +
+        (shareState.layout === k ? 'on' : '') + '">' + SHARE.sizes[k].name + '</button>';
+    });
+    el('modalRoot').innerHTML =
+      '<div class="modal" id="shareModal"><div class="modal-inner">' +
+      '<div class="modal-head"><span class="modal-title">生成分享图</span>' +
+      '<button class="modal-close" type="button" data-act="closeShare">关闭</button></div>' +
+      '<div class="seg">' + seg + '</div>' +
+      '<div class="share-label">配一句话（可改，最多 40 字）</div>' +
+      '<input class="share-input" id="shareText" maxlength="40" value="' + esc(shareState.text) + '" placeholder="写一句这次想说的">' +
+      '<div class="switch-row" data-act="toggleWeight"><span>显示体重变化 <span class="small">默认关闭，不公开体重</span></span>' +
+      '<span class="switch' + (shareState.showWeight ? ' on' : '') + '"></span></div>' +
+      '<div class="share-preview"><img id="shareImg" alt="分享图预览"></div>' +
+      '<div class="share-hint">iPhone：长按上方图片 → 存储到照片。<br>安卓 / 电脑：点下面的「下载图片」。</div>' +
+      '<div class="share-actions"><button class="btn-sec" type="button" data-act="closeShare">再改改</button>' +
+      '<button class="btn-save" type="button" data-act="saveImg">下载图片</button></div>' +
+      '</div></div>';
+    redrawShare();
+  }
+  function redrawShare() {
+    if (!shareCanvas) shareCanvas = document.createElement('canvas');
+    var size = SHARE.sizes[shareState.layout] || SHARE.sizes.xhs;
+    shareCanvas.width = size.w; shareCanvas.height = size.h;
+    var ctx = shareCanvas.getContext('2d');
+    if (!ctx) { toast('这个浏览器不支持图片生成'); return; }
+    var S = shareStats();
+    if (shareState.layout === 'wechat') drawWechat(ctx, S, shareState);
+    else drawXHS(ctx, S, shareState);
+    var img = el('shareImg');
+    if (img) img.src = shareCanvas.toDataURL('image/png');
+  }
+  function saveShareImg() {
+    if (!shareCanvas) return;
+    try {
+      shareCanvas.toBlob(function (blob) {
+        if (!blob) { toast('生成失败，请重试'); return; }
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url; a.download = '慢慢瘦-' + shareState.layout + '-' + todayStr() + '.png';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+        toast('图片已生成');
+      }, 'image/png');
+    } catch (e) { toast('这个浏览器不支持下载，请长按图片保存'); }
   }
 
   /* ---------------- 渲染 / 路由 ---------------- */
@@ -856,6 +1187,7 @@ var TIPS = [
   }
 
   document.addEventListener('click', function (e) {
+    if (e.target && e.target.id === 'shareModal') { closeShare(); return; }
     var tab = e.target.closest && e.target.closest('.tab[data-tab]');
     if (tab) { go(tab.getAttribute('data-tab')); return; }
     var node = e.target.closest && e.target.closest('[data-act]');
@@ -879,6 +1211,14 @@ var TIPS = [
         state = blank(); viewDate = todayStr(); renderAll(); toast('已清空，可以重新开始');
       }
     }
+    else if (act === 'share') openShare();
+    else if (act === 'closeShare') closeShare();
+    else if (act === 'layout') {
+      var L = node.getAttribute('data-layout');
+      if (SHARE.sizes[L]) { shareState.layout = L; renderShareModal(); }
+    }
+    else if (act === 'toggleWeight') { shareState.showWeight = !shareState.showWeight; renderShareModal(); }
+    else if (act === 'saveImg') saveShareImg();
   });
   el('importFile').addEventListener('change', function (e) {
     var f = e.target.files && e.target.files[0];
@@ -888,6 +1228,13 @@ var TIPS = [
     r.onerror = function () { toast('文件读取失败'); };
     r.readAsText(f);
     e.target.value = '';
+  });
+  document.addEventListener('input', function (e) {
+    if (e.target && e.target.id === 'shareText') {
+      shareState.text = e.target.value;
+      clearTimeout(shareTimer);
+      shareTimer = setTimeout(redrawShare, 120);
+    }
   });
   window.addEventListener('hashchange', function () {
     var h = location.hash.replace('#', '');
