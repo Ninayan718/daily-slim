@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="慢慢瘦">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" href="icon-512.png">
-<title>慢慢瘦 · 日常减肥打卡</title>
+<title>慢慢瘦 · 记 100 天</title>
 <style>
 :root{
   --bg:#FCF9F4;
@@ -24,8 +24,6 @@
   --green-mid:#BFE0CC;
   --amber:#D99552;
   --amber-soft:#FBF0E2;
-  --up:#D25B4B;
-  --down:#2E8B57;
   --shadow:0 2px 14px rgba(60,72,60,.055);
   --radius:16px;
 }
@@ -143,15 +141,6 @@ h1,h2,h3,p{margin:0}
 .bonus.on .b-box{background:var(--green);border-color:var(--green);color:#fff}
 .b-star{margin-left:auto;color:var(--amber);font-size:11px;flex:0 0 auto}
 
-.weight-row{display:flex;gap:8px;align-items:center}
-.weight-input{flex:1;min-width:0;height:42px;border:1.5px solid var(--line);border-radius:11px;padding:0 12px;background:#FCFBF8;font-size:15px;font-variant-numeric:tabular-nums;outline:none}
-.weight-input:focus{border-color:var(--green-mid);background:#fff}
-.btn-primary{height:42px;padding:0 18px;border-radius:11px;background:var(--green);color:#fff;font-size:14px;font-weight:700;flex:0 0 auto}
-.btn-ghost{height:40px;padding:0 15px;border-radius:11px;background:#fff;border:1px solid var(--line);font-size:13px;font-weight:600;color:var(--ink-2)}
-.w-latest{font-size:12.5px;color:var(--sub);margin-top:10px}
-.w-delta-up{color:var(--up);font-weight:700}
-.w-delta-down{color:var(--down);font-weight:700}
-
 .tip-strip{margin-top:16px;padding:13px 14px;background:#F6F2E9;border-radius:12px;font-size:12.5px;color:#7A7364;line-height:1.6;display:flex;gap:9px;align-items:flex-start}
 .tip-strip svg{width:16px;height:16px;flex:0 0 16px;margin-top:2px;color:var(--amber)}
 
@@ -214,13 +203,6 @@ details.faq .faq-body{padding:0 14px 14px;font-size:12.8px;color:var(--ink-2);li
 .heat-cell.future{background:transparent;border:1px dashed #E7E3D9}
 .heat-legend{display:flex;align-items:center;gap:6px;justify-content:flex-end;margin-top:10px;font-size:11px;color:var(--sub)}
 .heat-legend i{width:12px;height:12px;border-radius:4px;display:inline-block}
-.chart-box{padding:14px 15px}
-.chart-empty{height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:var(--sub);font-size:12.5px}
-.chart-empty svg{width:26px;height:26px;color:#CBD6CC}
-.chart-svg{width:100%;height:130px;display:block;overflow:visible}
-.chart-meta{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px}
-.chart-now{font-size:22px;font-weight:750;font-variant-numeric:tabular-nums}
-.chart-lab{font-size:11.5px;color:var(--sub)}
 .review{font-size:13px;color:var(--ink-2);line-height:1.75}
 .review b{color:var(--green-deep)}
 .review .rv-line{display:flex;gap:9px;padding:7px 0;align-items:flex-start}
@@ -258,11 +240,6 @@ details.faq .faq-body{padding:0 14px 14px;font-size:12.8px;color:var(--ink-2);li
 .share-label{font-size:12px;color:var(--sub);margin:15px 2px 7px}
 .share-input{width:100%;height:42px;border:1px solid var(--line);border-radius:11px;padding:0 12px;background:#fff;font-size:13.5px;outline:none}
 .share-input:focus{border-color:var(--green-mid)}
-.switch-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 2px 4px;font-size:13px;color:var(--ink-2);cursor:pointer}
-.switch{width:42px;height:24px;border-radius:99px;background:#DCDDD7;position:relative;transition:background .2s;flex:0 0 42px}
-.switch:after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .2s}
-.switch.on{background:var(--green)}
-.switch.on:after{transform:translateX(18px)}
 .share-preview{margin-top:10px;background:#EFEBE2;border-radius:14px;padding:10px;display:flex;justify-content:center}
 .share-preview img{width:auto;max-width:100%;max-height:300px;height:auto;display:block;border-radius:8px;box-shadow:0 3px 14px rgba(0,0,0,.10)}
 .share-hint{font-size:11.5px;color:var(--sub);line-height:1.6;margin-top:11px;text-align:center}
@@ -270,6 +247,25 @@ details.faq .faq-body{padding:0 14px 14px;font-size:12.8px;color:var(--ink-2);li
 .share-actions button{flex:1;height:44px;border-radius:12px;font-size:14px;font-weight:700}
 .btn-save{background:var(--green);color:#fff}
 .btn-sec{background:#fff;border:1px solid var(--line);color:var(--ink-2)}
+
+/* ---------- 品牌句 / Day 100 ---------- */
+.l-brand{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.28);font-size:12.5px;line-height:1.5;opacity:.92}
+.daybar-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.daybar-num{font-size:18px;font-weight:700;color:var(--green-deep);font-variant-numeric:tabular-nums}
+.daybar-num b{font-size:26px}
+.daybar{height:12px;border-radius:99px;background:#EFECE4;overflow:hidden;margin-top:12px}
+.daybar-fill{height:100%;border-radius:99px;background:var(--green)}
+.d100-hero{background:var(--green-soft);border-color:#D8EBDE}
+.d100-num{font-size:29px;font-weight:750;color:var(--green-deep);font-variant-numeric:tabular-nums}
+.d100-bar{height:12px;border-radius:99px;background:#D8E7DC;overflow:hidden;margin-top:12px}
+.d100-fill{height:100%;border-radius:99px;background:var(--green)}
+.d100-row{display:flex;align-items:center;gap:10px;padding:8px 0}
+.d100-label{width:124px;flex:0 0 124px;font-size:12.5px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.d100-track{flex:1;min-width:0;height:10px;background:#F1EEE6;border-radius:99px;overflow:hidden}
+.d100-track i{display:block;height:100%;border-radius:99px;background:var(--green-mid)}
+.d100-count{width:30px;flex:0 0 30px;text-align:right;font-size:12px;color:var(--sub);font-variant-numeric:tabular-nums}
+.d100-days{display:flex;flex-wrap:wrap;gap:7px}
+.d100-day{font-size:12px;color:var(--ink-2);background:#F6F2E9;border-radius:8px;padding:5px 9px}
 
 </style>
 </head>
@@ -284,6 +280,7 @@ details.faq .faq-body{padding:0 14px 14px;font-size:12.8px;color:var(--ink-2);li
     <button class="tab" data-tab="today" type="button"><span class="tab-ic" id="tabIcToday"></span><span>今天</span></button>
     <button class="tab" data-tab="plan" type="button"><span class="tab-ic" id="tabIcPlan"></span><span>方案</span></button>
     <button class="tab" data-tab="log" type="button"><span class="tab-ic" id="tabIcLog"></span><span>记录</span></button>
+    <button class="tab" data-tab="days100" type="button"><span class="tab-ic" id="tabIcDays100"></span><span>100 天</span></button>
   </nav>
 </div>
 <input type="file" id="importFile" accept="application/json,.json" hidden>
@@ -295,6 +292,7 @@ var ICONS = {
   today: '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M9 15l2 2 4-4"/>',
   plan: '<path d="M5 4h11a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4z"/><path d="M8 9h7M8 13h7M8 17h4"/>',
   log: '<path d="M4 20h16"/><rect x="5" y="12" width="3" height="6" rx="1"/><rect x="10.5" y="8" width="3" height="10" rx="1"/><rect x="16" y="4" width="3" height="14" rx="1"/>',
+  hundred: '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M7.5 14h3v3h-3zM13.5 14h3v3h-3z"/>',
   walk: '<circle cx="13" cy="4.2" r="1.8"/><path d="M11 21l1.5-5.5-2.5-2.2.9-4.3 3.1 1.6 2.5 2.4 2.5.6"/><path d="M10 9.2L7.5 11 6 14.5"/><path d="M12.5 15.5L15.5 21"/>',
   leaf: '<path d="M20 4c-8 0-14 3.5-14 10a6 6 0 0 0 6 6c6.5 0 10-6 8-16z"/><path d="M4 20c2-5 5.5-8.5 10-10.5"/>',
   bowl: '<path d="M3 11h18a9 9 0 0 1-9 9 9 9 0 0 1-9-9z"/><path d="M8 7.5c0-1 1-1.5 1-2.5M12 7c0-1.2 1-1.7 1-3M16 7.5c0-1 1-1.5 1-2.5"/>',
@@ -305,11 +303,9 @@ var ICONS = {
   left: '<path d="M15 5l-7 7 7 7"/>',
   right: '<path d="M9 5l7 7-7 7"/>',
   bolt: '<path d="M13 2L4.5 13.5H11L10 22l8.5-11.5H12L13 2z"/>',
-  stairs: '<path d="M3 20h5v-5h5v-5h5V5h3"/>',
   phone: '<rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/>',
   info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
   bulb: '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5.9 1.1 1 1.7h5.2c.1-.6.4-1.2 1-1.7A6 6 0 0 0 12 3z"/>',
-  chart: '<path d="M3 17l5-5 4 3 6-8 3 3"/><path d="M3 21h18"/>',
   down: '<path d="M12 3v13M7 12l5 5 5-5M4 21h16"/>',
   up: '<path d="M12 21V8M7 12l5-5 5 5M4 3h16"/>',
   trash: '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"/>',
@@ -332,7 +328,7 @@ var CORE = [
 
 /* 加分项：不计入完成度，做了是赚到 */
 var BONUS = [
-  {id:'stairs', icon:'stairs', title:'走楼梯，或提前一站下车'},
+  {id:'stairs', icon:'bowl',   title:'汤汁别拌饭'},
   {id:'allmeal',icon:'leaf',   title:'三餐都做到了先菜后饭'},
   {id:'nophone',icon:'phone',  title:'有一餐吃饭没刷手机'}
 ];
@@ -344,16 +340,14 @@ var PRINCIPLES = [
 ];
 
 var WHY = [
-  '减重说到底，还是<strong>吃进来的比用掉的少一点</strong>。但道理谁都懂，难的是天天做得到。',
-  '所以这份清单里没有一条能让你一天瘦半斤。它做的事只有一件：<strong>把门槛降到不需要意志力</strong>——少盛一拳饭、换一杯水、饭后多走十分钟，都是原本生活里顺手就能改的缝隙。',
-  '一天省下的不多，可它不反弹、不痛苦，能连着做一百天。慢一点，但一个月后裤子会告诉你。'
+  '道理谁都懂，难的是天天做得到。这份清单只干一件事：<strong>把门槛降到不需要意志力</strong>。'
 ];
 
 var DIET = [
   {
     t:'先吃菜，最后吃主食',
     d:'每餐前两口先夹蔬菜，再吃肉、蛋、豆腐，最后才动米饭面条。菜不用特地买，盘子里现有的那几筷子就行；能吃够一两拳头蔬菜更好。',
-    tip:'《中国2型糖尿病膳食指南》就建议按「蔬菜—肉类—主食」的顺序进餐。蔬菜里的膳食纤维先打底，饱腹感来得早，主食自然吃得少。',
+    tip:'很多人习惯先吃菜再吃饭。我不管原理，只管顺序好换。',
     note:'胃容易不舒服的人，别空腹猛吃大量粗纤维菜，菜和饭搭配着吃也可以。'
   },
   {
@@ -364,11 +358,11 @@ var DIET = [
   {
     t:'把「喝进去的热量」换成水',
     d:'奶茶、含糖饮料、果汁、甜味咖啡、酒，今天换成白水、无糖茶或黑咖。不必发誓戒一辈子，只管今天这一杯。',
-    tip:'这是整套方案里性价比最高的一条：液体糖几乎不顶饱，却最容易在不经意间多出来。'
+    tip:'最容易多出来的，常常是顺手喝掉的那杯。先把它换掉就好。'
   },
   {
     t:'吃到「不饿了」就停',
-    d:'不用光盘，剩一口不丢人。吃饭时把手机扣下、每口多嚼两下，给身体一点时间反应过来已经饱了。',
+    d:'不用光盘，剩一口不丢人。吃饭时把手机扣下、每口多嚼两下，慢慢吃，别赶。',
     tip:'一条就够用：先别急着添饭，等五分钟，很多时候就不想吃了。'
   },
   {
@@ -381,14 +375,14 @@ var DIET = [
 var OUTSIDE = [
   '点外卖：备注少饭 / 饭分开装；先挑套餐里的青菜吃两口，再吃肉，最后扒饭。',
   '堂食聚餐：不用解释、不用特殊对待，正常夹菜，主食少一点，甜饮换水就行。',
-  '汤汁别拌饭：红烧汁、汤面汤、盖浇汁是藏得最深的那部分，少蘸一点就够。',
+  '汤汁别拌饭：红烧汁、汤面汤、盖浇汁，少蘸一点就够。',
   '便利店：饭团或三明治 + 一盒蔬菜 + 茶叶蛋，先吃蔬菜，顺序照样成立。'
 ];
 
 var MAIN_MOVE = {
   t:'主场动作：饭后走 10 分钟',
   d:'吃完任意一餐，别马上坐回沙发或工位，出门、走廊、楼下、绕小区，慢走十分钟。能正常说话的速度就行，不用快走、不用出汗、不用换鞋。',
-  tip:'它单看消耗不大，厉害在「一天能发生三次」：不用安排时间、不用换衣服、不用下决心。顺便也让餐后别立刻瘫着。',
+  tip:'不用安排时间、不用换衣服、不用下决心，一天里顺手就能发生三次。',
   note:'胃食管反流或饭后容易不适的人，先坐十分钟再慢慢走；有头晕、心慌就停下。'
 };
 
@@ -411,19 +405,20 @@ var MOVES = [
 ];
 
 var WEEK = [
-  {t:'每周留一顿「随便吃」', d:'不用打卡、不用愧疚、不用第二天少吃补回来。减脂最怕的不是多吃一顿，是「破戒了，算了吧」。'},
+  {t:'每周留一顿「随便吃」', d:'不用打卡、不用愧疚、不用第二天少吃补回来。怕的不是多吃一顿，是「破戒了，算了吧」。'},
   {t:'只要勾了 1 项，今天就不算断', d:'出差、加班、生理期、情绪低，只做「饭后走 10 分钟」就交卷。漏掉的不用补，明天照常。'},
-  {t:'体重一周记 1～2 次就够', d:'固定晨起、上完厕所、空腹、穿得差不多时称。看一个月的趋势，别看单日数字——水分、盐分、睡眠都会让它上下跳。'},
-  {t:'一个月轻 1～2 公斤，就很好', d:'腰围小了、裤子松了、下午不那么困了，都是真进步。这个方案不追求快，追求你明年还在做。'}
+  {t:'空几天也没关系', d:'想起来就接着勾，不用补、不用重来。Day 只是页数，不是考核。'},
+  {t:'不称重，也知道自己往前走了', d:'本子上的格子会告诉你。哪天勾得顺、哪天偷懒，自己心里有数，就够了。'},
+  {t:'记满 100 天，翻一翻就好', d:'「100 天」页会告诉你哪一格常勾、哪一格经常空着。想接着记就接着记，想重新开始也行。'}
 ];
 
 var FAQ = [
-  {q:'要不要断碳水、不吃晚饭？', a:'不建议。主食砍太狠，容易饿到晚上报复性进食，也难长期坚持。这里只做「少一拳」和「换顺序」，吃的东西基本不变。'},
-  {q:'不用算卡路里，真的会瘦吗？', a:'真正起作用的是持续的小缺口，不是记得多精确。这个方案故意不算数，是为了把成本降到你能连做一百天；如果哪天你想更精细一点，再在这个基础上加也不迟。'},
-  {q:'完全不去健身房，够吗？', a:'对「先动起来」这件事，够了。饭后走十分钟 + 一分钟小动作，加上少坐多站，比办了卡去两次然后放弃有用得多。等习惯稳了，想加运动随时可以加。'},
-  {q:'卡住不动了怎么办？', a:'先别急着加码。翻翻记录页，看哪几项最常漏，把那一项补回来，通常比加大运动量管用。另外确认一下是不是最近「顺手多吃了」——坚果、水果、酱汁、周末那几杯，都容易不知不觉。'},
-  {q:'忙到完全没空呢？', a:'那就只留一项：饭后走 10 分钟。甚至可以只是站着收拾碗筷十分钟。方案里所有项目都可以跳过，唯独别把「连续记录」这件事弄断。'},
-  {q:'体重忽上忽下，是不是没效果？', a:'很正常。盐吃多了、睡少了、生理期前后，一两天浮动一两斤都是水分。只看每周同一条件下的数字和整条趋势线。'}
+  {q:'要不要断碳水、不吃晚饭？', a:'不建议。主食砍太狠，容易饿到晚上又想吃回来，也难长期坚持。这里只做「少一拳」和「换顺序」，吃的东西基本不变。'},
+  {q:'不算数字，怎么知道有没有进展？', a:'不记身体的账，只记日子的账。格子会一格一格攒起来，翻一翻就知道这一阵子过得怎么样。'},
+  {q:'完全不去健身房，够吗？', a:'对「先动起来」这件事，够了。饭后走十分钟 + 一分钟小动作，不用办卡、不用换衣服。等习惯稳了，想加运动随时可以加。'},
+  {q:'有几天没勾，怎么办？', a:'接着勾就好。翻翻记录页，看看哪一格经常空着，留着也没关系；想补就补那一格，不想补也行。'},
+  {q:'忙到完全没空呢？', a:'那就只留一项：饭后走 10 分钟。甚至可以只是站着收拾碗筷十分钟。空几天也没关系，想起来就接着勾。'},
+  {q:'100 天之后呢？', a:'想接着记就接着记，想重新开始也行。这本来就是个本子，不是任务。'}
 ];
 
 var NOTICE_HTML = '这是一份<strong>生活习惯记录工具</strong>，不是医疗建议。以下情况开始前请先问医生或注册营养师：' +
@@ -432,7 +427,7 @@ var NOTICE_HTML = '这是一份<strong>生活习惯记录工具</strong>，不�
   '<li>孕期、哺乳期、备孕，或有慢性病、正在服药、体重基数较大、曾有进食障碍。</li>' +
   '<li>胃容易不适的人，空腹大量吃高纤维蔬菜可能不舒服，改成菜和主食搭配着吃。</li>' +
   '</ul>' +
-  '运动中如出现头晕、心慌、明显不适，立刻停下。若体重长期无变化或伴随不适，请找专业人看看。';
+  '运动中如出现头晕、心慌、明显不适，立刻停下。若身体有不适，请找专业人看看。';
 
 var ENCOURAGE = [
   '今天还没开始，勾一项就算开场。',
@@ -448,7 +443,7 @@ var TIPS = [
   '所有项目都可以跳过，但只要勾了任意 1 项，今天就不算断。漏了不用补，明天照常。',
   '不用做得漂亮，做得久才算数。一周有五天做到，就已经赢过大起大落的七天。',
   '忘了打卡？点顶部左右箭头可以补记前几天，别为了断掉的记录重来一遍。',
-  '体重别天天称。固定晨起空腹，一周一两次，看趋势不看小数点。',
+  'Day 只是页数，不是考核。空几天，翻到哪一页都算数。',
   '哪天特别累，就只做「饭后走 10 分钟」，其他全部划掉也没关系。',
   '聚餐不用报备、不用解释。先夹菜、主食少一点、甜饮换水，就够了。',
   '最容易被忽略的不是主食，是酱汁、坚果、水果和「就尝一口」。'
@@ -461,8 +456,10 @@ var SHARE = {
     wechat: { w: 1200, h: 675,  name: '公众号 16:9' }
   },
   tags: ['不买特别的菜', '不换衣服运动', '不算任何数字'],
-  footer: '慢慢瘦 · 日常化减脂打卡',
-  slogan: '慢慢来，比较快。'
+  footer: '慢慢瘦 · 记 100 天',
+  slogan: '慢慢来，比较快。',
+  brand: '不改动生活，只改动生活里的缝隙',
+  hash: '#缝隙100天'
 };
 
 </script>
@@ -472,7 +469,8 @@ var SHARE = {
   'use strict';
 
   var KEY = 'daily-slim-v1';
-  var TABS = ['today', 'plan', 'log'];
+  var TABS = ['today', 'plan', 'log', 'days100'];
+  var ROUND_DAYS = 100;
   var CORE_IDS = CORE.map(function (x) { return x.id; });
   var BONUS_IDS = BONUS.map(function (x) { return x.id; });
   var WD = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
@@ -520,54 +518,39 @@ var SHARE = {
   }
   function getDay(s) { return state.days[s] || null; }
   function ensureDay(s) {
-    if (!state.days[s]) state.days[s] = { c: [], b: [], w: null };
+    if (!state.days[s]) state.days[s] = { c: [], b: [] };
     var d = state.days[s];
     if (!Array.isArray(d.c)) d.c = [];
     if (!Array.isArray(d.b)) d.b = [];
-    if (d.w == null) d.w = null;
     return d;
   }
-  function touched(d) { return !!d && ((d.c && d.c.length) || (d.b && d.b.length) || d.w != null); }
+  /* 只认核心六项：加分项、历史体重都不算「今天接住了」 */
+  function touched(d) { return !!d && Array.isArray(d.c) && d.c.length > 0; }
   function cCount(d) { return d && Array.isArray(d.c) ? d.c.length : 0; }
 
-  function streak() {
-    var t = todayStr();
-    var cur = touched(getDay(t)) ? t : addDays(t, -1);
-    var n = 0;
-    for (var i = 0; i < 400; i++) {
-      if (!touched(getDay(cur))) break;
-      n++; cur = addDays(cur, -1);
-    }
-    return n;
-  }
-  function rate7() {
-    var t = todayStr();
-    var span = Math.max(1, Math.min(7, diffDays(t, state.created) + 1));
-    var total = 0;
-    for (var i = 0; i < span; i++) total += cCount(getDay(addDays(t, -i)));
-    return Math.round(total / (span * CORE.length) * 100);
-  }
+  function dayNum() { return Math.max(1, diffDays(todayStr(), state.created) + 1); }
+  function dayLabel() { return 'Day ' + Math.min(dayNum(), ROUND_DAYS) + ' / ' + ROUND_DAYS; }
   function recordedDays() {
     return Object.keys(state.days).filter(function (k) { return touched(state.days[k]); }).length;
   }
-  function weightList() {
-    return Object.keys(state.days)
-      .filter(function (k) { return typeof state.days[k].w === 'number' && state.days[k].w > 0; })
-      .sort()
-      .map(function (k) { return { d: k, w: state.days[k].w }; });
+  function weekCells() {
+    var t = todayStr(), n = 0;
+    for (var i = 0; i < 7; i++) n += cCount(getDay(addDays(t, -i)));
+    return n;
   }
-  function latestWeight() { var a = weightList(); return a.length ? a[a.length - 1] : null; }
+  function totalCells() {
+    return Object.keys(state.days).reduce(function (n, k) { return n + cCount(state.days[k]); }, 0);
+  }
 
   /* ---------------- 今天 ---------------- */
   function renderToday() {
     var t = todayStr();
     var isToday = viewDate === t;
-    var d = getDay(viewDate) || { c: [], b: [], w: null };
+    var d = getDay(viewDate) || { c: [], b: [] };
     var c = d.c || [], b = d.b || [];
     var done = c.length;
     var circumference = 2 * Math.PI * 40;
     var offset = circumference * (1 - done / CORE.length);
-    var st = streak();
     var tip = TIPS[(diffDays(viewDate, '2026-01-01') % TIPS.length + TIPS.length) % TIPS.length];
 
     var h = [];
@@ -585,9 +568,9 @@ var SHARE = {
     h.push('<div class="ring-wrap"><svg viewBox="0 0 96 96"><circle class="ring-bg" cx="48" cy="48" r="40" fill="none" stroke-width="8"/><circle class="ring-fg" cx="48" cy="48" r="40" fill="none" stroke-width="8" stroke-dasharray="' + circumference.toFixed(1) + '" stroke-dashoffset="' + offset.toFixed(1) + '"/></svg>');
     h.push('<div class="ring-txt"><span class="ring-num">' + done + '</span><span class="ring-unit">/ ' + CORE.length + ' 项</span></div></div>');
     h.push('<div class="hero-txt">');
-    h.push('<div class="streak-chip">' + (st > 0 ? '连续 ' + st + ' 天' : '今天开个头') + '</div>');
+    h.push('<div class="streak-chip">已经记了 ' + recordedDays() + ' 笔</div>');
     h.push('<div class="hero-line">' + esc(ENCOURAGE[Math.min(done, ENCOURAGE.length - 1)]) + '</div>');
-    h.push('<div class="hero-sub">' + (isToday ? '本周完成率 ' + rate7() + '% · 已记录 ' + recordedDays() + ' 天' : '补记完点右上角箭头回到今天') + '</div>');
+    h.push('<div class="hero-sub">' + (isToday ? '这周勾了 ' + weekCells() + ' 格 · 记过 ' + recordedDays() + ' 天' : '补记完点右上角箭头回到今天') + '</div>');
     h.push('</div></div>');
 
     if (done === 0) {
@@ -623,17 +606,13 @@ var SHARE = {
     });
     h.push('</div>');
 
-    var lw = latestWeight();
-    h.push('<div class="section-title"><span class="h2">体重（可选）</span><span class="small">一周 1～2 次就够</span></div>');
+    var dn = Math.min(dayNum(), ROUND_DAYS);
+    h.push('<div class="section-title"><span class="h2">' + dayLabel() + '</span><span class="small">一轮 100 天，慢慢记</span></div>');
     h.push('<div class="card pad">');
-    h.push('<div class="weight-row"><input class="weight-input" id="wInput" type="number" inputmode="decimal" step="0.1" min="20" max="300" placeholder="' + (d.w != null ? d.w : '例如 62.5') + '" value="' + (d.w != null ? d.w : '') + '"><span class="small">kg</span><button class="btn-primary" type="button" data-act="savew">记下</button></div>');
-    if (d.w != null) {
-      h.push('<div class="w-latest">' + md(viewDate) + ' 记的是 <b>' + d.w + ' kg</b>　<button class="link-btn" type="button" data-act="delw">删掉</button></div>');
-    } else if (lw) {
-      h.push('<div class="w-latest">上次：' + md(lw.d) + ' · ' + lw.w + ' kg。看趋势就好，别天天称。</div>');
-    } else {
-      h.push('<div class="w-latest">固定晨起空腹称，才方便比较。</div>');
-    }
+    h.push('<div class="daybar-head"><span class="daybar-num">Day <b>' + dn + '</b> / ' + ROUND_DAYS + '</span><span class="small">记过 ' + recordedDays() + ' 天</span></div>');
+    h.push('<div class="daybar"><div class="daybar-fill" style="width:' + dn + '%"></div></div>');
+    h.push('<div class="muted" style="margin-top:10px">空几天也没关系，翻到哪一页都算数。</div>');
+    h.push('<button class="link-btn" type="button" data-act="goDays100" style="margin-top:9px">看看 100 天回顾</button>');
     h.push('</div>');
 
     h.push('<div class="tip-strip">' + svg('bulb') + '<span>' + tip + '</span></div>');
@@ -644,8 +623,9 @@ var SHARE = {
   function renderPlan() {
     var h = [];
     h.push('<div class="lead"><div class="l-kicker">日常化 · 生活化 · 不折腾</div>');
-    h.push('<div class="l-title">不改吃什么，<br>不改生活方式，也能慢慢瘦</div>');
-    h.push('<div class="l-desc">没有健身餐、没有健身房、没有卡路里表。只有六件顺手就能做的小事，和一本每天打开勾一下的账。</div></div>');
+    h.push('<div class="l-title">不改吃什么，<br>不改生活方式，只是每天勾六格</div>');
+    h.push('<div class="l-desc">没有健身餐、没有健身房、没有卡路里表。只有六件顺手就能做的小事，和一本每天打开勾一下的账。</div>');
+    h.push('<div class="l-brand">' + SHARE.brand + '</div></div>');
 
     h.push('<div class="section-title"><span class="h2">先说好三条规矩</span></div>');
     h.push('<div class="principles">');
@@ -654,7 +634,7 @@ var SHARE = {
     });
     h.push('</div>');
 
-    h.push('<div class="section-title"><span class="h2">为什么这样能瘦</span></div>');
+    h.push('<div class="section-title"><span class="h2">只说一句</span></div>');
     h.push('<div class="card">');
     WHY.forEach(function (p) { h.push('<div class="plain">' + p + '</div>'); });
     h.push('</div>');
@@ -714,42 +694,6 @@ var SHARE = {
     if (n === 5) return ' l3';
     return ' l4';
   }
-  function renderChart() {
-    var a = weightList().slice(-12);
-    if (!a.length) {
-      return '<div class="chart-empty">' + svg('chart') + '<span>还没有体重记录</span><span style="font-size:11.5px">在「今天」页随手记一次就行</span></div>';
-    }
-    var last = a[a.length - 1], prev = a.length > 1 ? a[a.length - 2] : null;
-    var delta = prev ? Math.round((last.w - prev.w) * 10) / 10 : null;
-    var dh = '';
-    if (delta === null) dh = '<span class="chart-lab">第一次记录，之后就能看趋势</span>';
-    else if (delta > 0) dh = '<span class="w-delta-up">↑ ' + delta.toFixed(1) + ' kg</span> <span class="chart-lab">比上次</span>';
-    else if (delta < 0) dh = '<span class="w-delta-down">↓ ' + Math.abs(delta).toFixed(1) + ' kg</span> <span class="chart-lab">比上次</span>';
-    else dh = '<span class="chart-lab">和上次持平</span>';
-
-    var vals = a.map(function (x) { return x.w; });
-    var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
-    var span = max - min; if (span < 0.8) span = 0.8;
-    var mid = (max + min) / 2;
-    var lo = mid - span / 2 - 0.12, hi = mid + span / 2 + 0.12;
-    var W = 320, H = 120, L = 14, R = 14, T = 14, B = 24;
-    var pts = a.map(function (x, i) {
-      var px = a.length === 1 ? W / 2 : L + i * (W - L - R) / (a.length - 1);
-      var py = T + (hi - x.w) / (hi - lo) * (H - T - B);
-      return { x: px, y: py };
-    });
-    var line = pts.map(function (p) { return p.x.toFixed(1) + ',' + p.y.toFixed(1); }).join(' ');
-    var s = '<svg class="chart-svg" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none">';
-    s += '<line x1="' + L + '" y1="' + (H - B) + '" x2="' + (W - R) + '" y2="' + (H - B) + '" stroke="#EDE8DE" stroke-width="1"/>';
-    if (pts.length > 1) s += '<polyline points="' + line + '" fill="none" stroke="#3F8F6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>';
-    pts.forEach(function (p, i) {
-      s += '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + (i === pts.length - 1 ? 4.2 : 2.8) + '" fill="' + (i === pts.length - 1 ? '#2E7154' : '#3F8F6B') + '"/>';
-    });
-    s += '<text x="' + L + '" y="' + (H - 6) + '" fill="#8A968E" font-size="10">' + md(a[0].d) + '</text>';
-    s += '<text x="' + (W - R) + '" y="' + (H - 6) + '" fill="#8A968E" font-size="10" text-anchor="end">' + md(last.d) + '</text>';
-    s += '</svg>';
-    return '<div class="chart-meta"><span class="chart-now">' + last.w.toFixed(1) + ' <span style="font-size:12px;color:var(--sub);font-weight:400">kg</span></span>' + dh + '</div>' + s;
-  }
   function renderReview() {
     var t = todayStr(), counts = {}, total = 0;
     CORE.forEach(function (x) { counts[x.id] = 0; });
@@ -761,12 +705,12 @@ var SHARE = {
     var sorted = CORE.slice().sort(function (a, b) { return counts[b.id] - counts[a.id]; });
     var best = sorted[0], worst = sorted[sorted.length - 1];
     var h = '<div class="review">';
-    h += '<div class="rv-line"><span class="rv-dot"></span><span>近 7 天共做到 <b>' + total + '</b> 项，完成率 <b>' + rate7() + '%</b>。</span></div>';
-    h += '<div class="rv-line"><span class="rv-dot"></span><span>最稳的是「<b>' + best.title + '</b>」，' + counts[best.id] + '/7 天。</span></div>';
+    h += '<div class="rv-line"><span class="rv-dot"></span><span>近 7 天共勾了 <b>' + total + '</b> 格。</span></div>';
+    h += '<div class="rv-line"><span class="rv-dot"></span><span>「<b>' + best.title + '</b>」勾得最多，' + counts[best.id] + '/7 天。</span></div>';
     if (counts[worst.id] < counts[best.id]) {
-      h += '<div class="rv-line"><span class="rv-dot" style="background:var(--amber)"></span><span>最容易漏的是「<b>' + worst.title + '</b>」。下周只盯这一项就好，别六条一起改。</span></div>';
+      h += '<div class="rv-line"><span class="rv-dot" style="background:var(--amber)"></span><span>「<b>' + worst.title + '</b>」这格经常空着，留着也没关系。</span></div>';
     } else {
-      h += '<div class="rv-line"><span class="rv-dot"></span><span>六项做得挺平均，保持这个节奏就够了。</span></div>';
+      h += '<div class="rv-line"><span class="rv-dot"></span><span>六格勾得挺平均，想怎么记就怎么记。</span></div>';
     }
     h += '</div>';
     return h;
@@ -778,9 +722,9 @@ var SHARE = {
     h.push('<p class="muted" style="margin-top:5px">不评判，只是看看自己做到了多少。</p>');
 
     h.push('<div class="stat-grid" style="margin-top:14px">');
-    h.push('<div class="stat"><div class="stat-v">' + streak() + '</div><div class="stat-l">连续天数</div></div>');
-    h.push('<div class="stat"><div class="stat-v">' + rate7() + '%</div><div class="stat-l">本周完成率</div></div>');
-    h.push('<div class="stat"><div class="stat-v">' + recordedDays() + '</div><div class="stat-l">已记录天数</div></div>');
+    h.push('<div class="stat"><div class="stat-v">' + recordedDays() + '</div><div class="stat-l">记过的日子</div></div>');
+    h.push('<div class="stat"><div class="stat-v">' + weekCells() + '</div><div class="stat-l">这周勾了几格</div></div>');
+    h.push('<div class="stat"><div class="stat-v">' + totalCells() + '</div><div class="stat-l">累计勾了几格</div></div>');
     h.push('</div>');
 
     h.push('<button class="share-entry" type="button" data-act="share">' + svg('share') + '生成分享图 · 小红书 / 公众号</button>');
@@ -801,9 +745,6 @@ var SHARE = {
     h.push('<div class="heat-legend">少 <i style="background:#F0EDE5"></i><i style="background:#DCEDDF"></i><i style="background:#B5DCC2"></i><i style="background:#7BC49C"></i><i style="background:#3F8F6B"></i> 多</div>');
     h.push('</div>');
 
-    h.push('<div class="section-title"><span class="h2">体重趋势</span><span class="small">最近 12 次</span></div>');
-    h.push('<div class="card chart-box">' + renderChart() + '</div>');
-
     h.push('<div class="section-title"><span class="h2">这周的小结</span></div>');
     h.push('<div class="card pad">' + renderReview() + '</div>');
 
@@ -817,6 +758,73 @@ var SHARE = {
     return h.join('');
   }
 
+  /* ---------------- 100 天回顾 ---------------- */
+  function renderDays100() {
+    var t = todayStr(), n = dayNum(), span = Math.min(n, ROUND_DAYS);
+    var counts = {}, empty = [], done = 0;
+    CORE.forEach(function (x) { counts[x.id] = 0; });
+    for (var i = 0; i < span; i++) {
+      var ds = addDays(state.created, i);
+      if (ds > t) break;
+      var d = getDay(ds), cc = cCount(d);
+      if (!cc) empty.push(ds); else done++;
+      if (d && Array.isArray(d.c)) d.c.forEach(function (id) { if (id in counts) counts[id]++; });
+    }
+    var max = Math.max.apply(null, CORE.map(function (x) { return counts[x.id]; }).concat([1]));
+    var sorted = CORE.slice().sort(function (a, b) { return counts[b.id] - counts[a.id]; });
+    var most = sorted[0], least = sorted[sorted.length - 1];
+    var pct = Math.round(span / ROUND_DAYS * 100);
+
+    var h = [];
+    h.push('<h1 class="h1">100 天回顾</h1>');
+    h.push('<p class="muted" style="margin-top:5px">不评判，只翻一翻这一轮记过的日子。</p>');
+    h.push('<div class="card pad d100-hero" style="margin-top:14px">');
+    h.push('<div class="d100-num">' + dayLabel() + '</div>');
+    h.push('<div class="d100-bar"><div class="d100-fill" style="width:' + pct + '%"></div></div>');
+    h.push('<div class="muted" style="margin-top:10px">' +
+      (n > ROUND_DAYS ? '一轮记满了，想接着记就接着记。' : '空几天也没关系，Day 只是页数。') +
+      '　这一轮记过 ' + done + ' 天，空着 ' + empty.length + ' 天。</div>');
+    h.push('</div>');
+
+    h.push('<div class="section-title"><span class="h2">六格各勾了多少</span></div>');
+    h.push('<div class="card pad">');
+    CORE.forEach(function (x) {
+      var v = counts[x.id];
+      h.push('<div class="d100-row"><span class="d100-label">' + x.title + '</span>' +
+        '<span class="d100-track"><i style="width:' + Math.round(v / max * 100) + '%"></i></span>' +
+        '<span class="d100-count">' + v + '</span></div>');
+    });
+    h.push('</div>');
+
+    h.push('<div class="section-title"><span class="h2">空着的日子</span></div>');
+    h.push('<div class="card pad">');
+    if (!done) {
+      h.push('<div class="empty-mini">还没开始记。今天勾一格，这页就有内容了。</div>');
+    } else if (!empty.length) {
+      h.push('<div class="empty-mini">这一轮还没空过一天。当然，空着也没关系。</div>');
+    } else {
+      h.push('<div class="muted" style="margin-bottom:9px">这 ' + empty.length + ' 天一格没勾。留着就留着，不用补。</div>');
+      h.push('<div class="d100-days">');
+      empty.slice(-8).forEach(function (d) { h.push('<span class="d100-day">' + md(d) + '</span>'); });
+      h.push('</div>');
+    }
+    h.push('</div>');
+
+    h.push('<div class="section-title"><span class="h2">哪一格经常空着</span></div>');
+    h.push('<div class="card pad">');
+    if (done > 0) {
+      h.push('<div class="review"><div class="rv-line"><span class="rv-dot"></span><span>「<b>' + most.title + '</b>」勾得最多，' + counts[most.id] + ' 次。</span></div>');
+      h.push('<div class="rv-line"><span class="rv-dot" style="background:var(--amber)"></span><span>「<b>' + least.title + '</b>」这格经常空着，留着也没关系。</span></div></div>');
+    } else {
+      h.push('<div class="empty-mini">还没有记录，看不出来。等勾过几天再翻。</div>');
+    }
+    h.push('</div>');
+
+    h.push('<button class="share-entry" type="button" data-act="share">' + svg('share') + '把这一页做成分享图</button>');
+    h.push('<p class="muted" style="text-align:center;margin-top:14px;line-height:1.7">' + SHARE.brand + '</p>');
+    return h.join('');
+  }
+
   /* ---------------- 分享图（原生 Canvas，无依赖） ---------------- */
   var SH = {
     bg: '#FCF9F4', card: '#FFFFFF', ink: '#2C3A33', sub: '#8A968E',
@@ -824,7 +832,7 @@ var SHARE = {
   };
   var HEAT = ['#F0EDE5', '#DCEDDF', '#B5DCC2', '#7BC49C', '#3F8F6B'];
   var FONT = '-apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif';
-  var shareState = { layout: 'xhs', text: '', showWeight: false };
+  var shareState = { layout: 'xhs', text: '' };
   var shareCanvas = null, shareTimer = null;
 
   function heatIdx(n) { return n <= 0 ? 0 : n <= 2 ? 1 : n <= 4 ? 2 : n === 5 ? 3 : 4; }
@@ -899,31 +907,16 @@ var SHARE = {
       if (d && Array.isArray(d.c)) d.c.forEach(function (id) { if (id in counts) { counts[id]++; total++; } });
     }
     var best = CORE.slice().sort(function (a, b) { return counts[b.id] - counts[a.id]; })[0];
-    var items = 0;
-    Object.keys(state.days).forEach(function (k) { items += cCount(state.days[k]); });
-    var wl = weightList();
-    var wd = wl.length > 1 ? Math.round((wl[wl.length - 1].w - wl[0].w) * 10) / 10 : null;
     return {
-      streak: streak(), rate: rate7(), days: recordedDays(), items: items, cells: cells,
-      best: best, bestN: counts[best.id], hasBest: total > 0,
-      wdelta: wd, hasWeight: wd !== null
+      day: Math.min(dayNum(), ROUND_DAYS), days: recordedDays(),
+      week: weekCells(), items: totalCells(), cells: cells,
+      best: best, bestN: counts[best.id], hasBest: total > 0
     };
   }
   function defaultShareText() {
-    var s = streak();
-    if (s >= 7) return '没节食，没去健身房，只是每天做到一点点。';
-    if (s >= 1) return '都是些不用咬牙就能做的小事。';
-    if (recordedDays() > 0) return '断了也没关系，今天勾一项就接上。';
-    return '从今天开始，把减肥放进原本的生活里。';
+    if (!recordedDays()) return '从今天开始，把这件小事放进原本的生活里。';
+    return '断了也没关系，今天勾一项就接上。';
   }
-  function weightLabel(S) {
-    if (!S.hasWeight) return '';
-    var d = S.wdelta;
-    if (d > 0) return '体重累计 ↑' + d.toFixed(1) + ' kg';
-    if (d < 0) return '体重累计 ↓' + Math.abs(d).toFixed(1) + ' kg';
-    return '体重持平';
-  }
-  function weightColor(S) { return S.hasWeight && S.wdelta > 0 ? '#D25B4B' : SH.deep; }
 
   function drawXHS(ctx, S, D) {
     var W = 1080, H = 1440, P = 80;
@@ -932,20 +925,19 @@ var SHARE = {
 
     ctx.beginPath(); ctx.arc(P + 14, 92, 14, 0, Math.PI * 2); ctx.fillStyle = SH.green; ctx.fill();
     cText(ctx, '慢慢瘦', P + 42, 104, 34, SH.deep, true);
-    cText(ctx, '日常减脂 · 第 ' + Math.max(1, diffDays(todayStr(), state.created) + 1) + ' 天',
-      W - P, 104, 24, SH.sub, false, 'right');
+    cText(ctx, SHARE.hash, W - P, 104, 24, SH.green, false, 'right');
     ctx.strokeStyle = SH.line; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.moveTo(P, 145); ctx.lineTo(W - P, 145); ctx.stroke();
 
-    cText(ctx, S.streak > 0 ? '连续 ' + S.streak + ' 天' : '今天开个头', P, 260, 88, SH.deep, true);
+    cText(ctx, 'Day ' + S.day + ' / ' + ROUND_DAYS, P, 260, 76, SH.deep, true);
     var lines = wrapLines(ctx, D.text || defaultShareText(), W - 2 * P, 2, 30, false);
     lines.forEach(function (l, i) { cText(ctx, l, P, 325 + i * 44, 30, SH.ink, false); });
 
     var cw = (W - 2 * P - 40) / 3, cy = 400, ch = 152;
     var cards = [
-      { v: S.days + ' 天', l: '已记录天数' },
-      { v: S.rate + '%', l: '本周完成率' },
-      { v: S.items + ' 项', l: '累计做到' }
+      { v: S.days + ' 天', l: '记过的日子' },
+      { v: S.week + ' 格', l: '这周勾了' },
+      { v: S.items + ' 格', l: '累计勾了' }
     ];
     cards.forEach(function (c, i) {
       var x = P + i * (cw + 20);
@@ -955,8 +947,7 @@ var SHARE = {
     });
 
     cText(ctx, '最近三周', P, 620, 30, SH.ink, true);
-    var sub = D.showWeight && S.hasWeight ? weightLabel(S) : '越深，做得越多';
-    cText(ctx, sub, W - P, 620, 22, D.showWeight && S.hasWeight ? weightColor(S) : SH.sub, false, 'right');
+    cText(ctx, '越深，勾得越多', W - P, 620, 22, SH.sub, false, 'right');
 
     var cell = 118, gap = 16, hx = P, hy = 690;
     var wd7 = ['一', '二', '三', '四', '五', '六', '日'];
@@ -966,10 +957,10 @@ var SHARE = {
     var by = 1110;
     rRect(ctx, P, by, W - 2 * P, 112, 20, SH.soft);
     if (S.hasBest) {
-      cText(ctx, '最稳的一项', P + 28, by + 46, 24, SH.deep, true);
-      cText(ctx, S.best.title + ' · 近 7 天做到 ' + S.bestN + ' 次', P + 28, by + 88, 28, SH.deep, false);
+      cText(ctx, '常勾的一格', P + 28, by + 46, 24, SH.deep, true);
+      cText(ctx, S.best.title + ' · 近 7 天 ' + S.bestN + ' 次', P + 28, by + 88, 28, SH.deep, false);
     } else {
-      cText(ctx, '从今天开始，勾一项就算开场。', P + 28, by + 68, 28, SH.deep, false);
+      cText(ctx, '从今天开始，勾一格就算开场。', P + 28, by + 68, 28, SH.deep, false);
     }
 
     ctx.font = '24px ' + FONT;
@@ -992,14 +983,15 @@ var SHARE = {
 
     ctx.beginPath(); ctx.arc(P + 11, 72, 11, 0, Math.PI * 2); ctx.fillStyle = SH.green; ctx.fill();
     cText(ctx, '慢慢瘦', P + 32, 82, 26, SH.deep, true);
-    cText(ctx, S.streak > 0 ? '连续 ' + S.streak + ' 天' : '今天开个头', P, 205, 68, SH.deep, true);
+    cText(ctx, SHARE.hash, 560, 82, 19, SH.green, false, 'right');
+    cText(ctx, 'Day ' + S.day + ' / ' + ROUND_DAYS, P, 205, 56, SH.deep, true);
     var lines = wrapLines(ctx, D.text || defaultShareText(), 480, 2, 24, false);
     lines.forEach(function (l, i) { cText(ctx, l, P, 258 + i * 36, 24, SH.ink, false); });
 
     var nums = [
-      { v: S.days + ' 天', l: '已记录' },
-      { v: S.rate + '%', l: '本周完成率' },
-      { v: S.items + ' 项', l: '累计做到' }
+      { v: S.days + ' 天', l: '记过的日子' },
+      { v: S.week + ' 格', l: '这周勾了' },
+      { v: S.items + ' 格', l: '累计勾了' }
     ];
     var nx = P;
     nums.forEach(function (n, i) {
@@ -1019,9 +1011,7 @@ var SHARE = {
     var cx = 620, cyy = 64, cw = 516, ch = 547;
     rRect(ctx, cx, cyy, cw, ch, 24, SH.card, SH.line, 2);
     cText(ctx, '最近三周', cx + 34, cyy + 56, 26, SH.ink, true);
-    var sub = D.showWeight && S.hasWeight ? weightLabel(S) : '越深，做得越多';
-    cText(ctx, sub, cx + cw - 34, cyy + 56, 19,
-      D.showWeight && S.hasWeight ? weightColor(S) : SH.sub, false, 'right');
+    cText(ctx, '越深，勾得越多', cx + cw - 34, cyy + 56, 19, SH.sub, false, 'right');
 
     var cell = 56, gap = 8, hx = cx + 34, hy = cyy + 90;
     var wd7 = ['一', '二', '三', '四', '五', '六', '日'];
@@ -1031,10 +1021,10 @@ var SHARE = {
     var ry = cyy + 320;
     rRect(ctx, cx + 34, ry, cw - 68, 92, 16, SH.soft);
     if (S.hasBest) {
-      cText(ctx, '最稳的一项', cx + 54, ry + 36, 20, SH.deep, true);
-      cText(ctx, S.best.title + ' · ' + S.bestN + '/7 天', cx + 54, ry + 70, 22, SH.deep, false);
+      cText(ctx, '常勾的一格', cx + 54, ry + 36, 20, SH.deep, true);
+      cText(ctx, S.best.title + ' · 近 7 天 ' + S.bestN + ' 次', cx + 54, ry + 70, 22, SH.deep, false);
     } else {
-      cText(ctx, '从今天开始，勾一项就算开场。', cx + 54, ry + 56, 22, SH.deep, false);
+      cText(ctx, '从今天开始，勾一格就算开场。', cx + 54, ry + 56, 22, SH.deep, false);
     }
 
     var lx = cx + 34, ly = cyy + 455;
@@ -1047,7 +1037,6 @@ var SHARE = {
   function openShare() {
     shareState.layout = 'xhs';
     shareState.text = defaultShareText();
-    shareState.showWeight = false;
     document.body.style.overflow = 'hidden';
     renderShareModal();
   }
@@ -1070,8 +1059,6 @@ var SHARE = {
       '<div class="seg">' + seg + '</div>' +
       '<div class="share-label">配一句话（可改，最多 40 字）</div>' +
       '<input class="share-input" id="shareText" maxlength="40" value="' + esc(shareState.text) + '" placeholder="写一句这次想说的">' +
-      '<div class="switch-row" data-act="toggleWeight"><span>显示体重变化 <span class="small">默认关闭，不公开体重</span></span>' +
-      '<span class="switch' + (shareState.showWeight ? ' on' : '') + '"></span></div>' +
       '<div class="share-preview"><img id="shareImg" alt="分享图预览"></div>' +
       '<div class="share-hint">iPhone：长按上方图片 → 存储到照片。<br>安卓 / 电脑：点下面的「下载图片」。</div>' +
       '<div class="share-actions"><button class="btn-sec" type="button" data-act="closeShare">再改改</button>' +
@@ -1114,10 +1101,12 @@ var SHARE = {
     });
     var t = todayStr();
     el('topbarRight').innerHTML = viewDate === t
-      ? '<span>第 ' + Math.max(1, diffDays(t, state.created) + 1) + ' 天</span>'
+      ? '<span>' + dayLabel() + '</span>'
       : '<button class="link-btn" type="button" data-act="backToday">回到今天</button>';
     var main = el('main');
-    main.innerHTML = curTab === 'plan' ? renderPlan() : (curTab === 'log' ? renderLog() : renderToday());
+    main.innerHTML = curTab === 'plan' ? renderPlan()
+      : curTab === 'log' ? renderLog()
+      : curTab === 'days100' ? renderDays100() : renderToday();
     main.classList.remove('fade-in');
     void main.offsetWidth;
     main.classList.add('fade-in');
@@ -1137,19 +1126,9 @@ var SHARE = {
     var arr = kind === 'c' ? d.c : d.b;
     var i = arr.indexOf(id);
     if (i >= 0) arr.splice(i, 1); else arr.push(id);
-    if (!d.c.length && !d.b.length && d.w == null) delete state.days[viewDate];
+    if (!d.c.length && !d.b.length) delete state.days[viewDate];
     save();
     renderAll();
-  }
-  function saveWeight() {
-    var input = el('wInput');
-    if (!input) return;
-    var v = parseFloat(input.value);
-    if (!isFinite(v) || v < 20 || v > 300) { toast('填一个 20～300 之间的数字'); return; }
-    v = Math.round(v * 10) / 10;
-    var d = ensureDay(viewDate);
-    d.w = v;
-    save(); renderAll(); toast('记下了：' + v + ' kg');
   }
   function exportData() {
     try {
@@ -1175,10 +1154,9 @@ var SHARE = {
       Object.keys(o.days).forEach(function (k) {
         if (!/^\d{4}-\d{2}-\d{2}$/.test(k)) return;
         var src = o.days[k] || {};
-        var dst = state.days[k] || { c: [], b: [], w: null };
+        var dst = state.days[k] || { c: [], b: [] };
         dst.c = union(dst.c, src.c, CORE_IDS);
         dst.b = union(dst.b, src.b, BONUS_IDS);
-        if (dst.w == null && typeof src.w === 'number' && src.w >= 20 && src.w <= 300) dst.w = src.w;
         state.days[k] = dst; n++;
       });
       if (o.created && o.created < state.created) state.created = o.created;
@@ -1198,11 +1176,7 @@ var SHARE = {
     else if (act === 'prevDay') { if (diffDays(todayStr(), viewDate) < 30) { viewDate = addDays(viewDate, -1); renderAll(); } }
     else if (act === 'nextDay') { if (viewDate < todayStr()) { viewDate = addDays(viewDate, 1); renderAll(); } }
     else if (act === 'backToday') { viewDate = todayStr(); renderAll(); }
-    else if (act === 'savew') saveWeight();
-    else if (act === 'delw') {
-      var d = getDay(viewDate);
-      if (d) { d.w = null; if (!d.c.length && !d.b.length) delete state.days[viewDate]; save(); renderAll(); }
-    }
+    else if (act === 'goDays100') go('days100');
     else if (act === 'export') exportData();
     else if (act === 'import') el('importFile').click();
     else if (act === 'clear') {
@@ -1217,7 +1191,6 @@ var SHARE = {
       var L = node.getAttribute('data-layout');
       if (SHARE.sizes[L]) { shareState.layout = L; renderShareModal(); }
     }
-    else if (act === 'toggleWeight') { shareState.showWeight = !shareState.showWeight; renderShareModal(); }
     else if (act === 'saveImg') saveShareImg();
   });
   el('importFile').addEventListener('change', function (e) {
@@ -1240,13 +1213,11 @@ var SHARE = {
     var h = location.hash.replace('#', '');
     if (TABS.indexOf(h) >= 0 && h !== curTab) { curTab = h; renderAll(); }
   });
-  window.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter' && el('wInput') && document.activeElement === el('wInput')) saveWeight();
-  });
 
   el('tabIcToday').innerHTML = svg('today');
   el('tabIcPlan').innerHTML = svg('plan');
   el('tabIcLog').innerHTML = svg('log');
+  el('tabIcDays100').innerHTML = svg('hundred');
   renderAll();
 })();
 
